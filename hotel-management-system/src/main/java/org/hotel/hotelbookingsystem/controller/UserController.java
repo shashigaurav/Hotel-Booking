@@ -56,7 +56,7 @@ public class UserController {
 
     }
 
-    @GetMapping("profile")
+    @GetMapping("/profile")
     public ResponseEntity<UserDto> getProfile(HttpServletRequest request) {
         String authHeader = request.getHeader("Authorization");
         if (authHeader == null && !authHeader.startsWith("Bearer ")) {
