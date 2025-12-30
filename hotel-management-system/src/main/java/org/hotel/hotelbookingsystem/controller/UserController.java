@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "https://hotel-booking-msg.netlify.app")
+
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
@@ -59,7 +59,7 @@ public class UserController {
     @GetMapping("/profile")
     public ResponseEntity<UserDto> getProfile(HttpServletRequest request) {
         String authHeader = request.getHeader("Authorization");
-        if (authHeader == null && !authHeader.startsWith("Bearer ")) {
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         String token = authHeader.substring(7);
@@ -70,12 +70,6 @@ public class UserController {
         return ResponseEntity.ok(profile);
 
     }
-
-
-
-
-
-
 
 
 }
